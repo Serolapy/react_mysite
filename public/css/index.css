@@ -1,0 +1,10 @@
+/* Цвета:
+	rgba(255, 228, 196, 0.8) - Bisque: ARTICLE
+	rgba(255, 222, 173, 0.6)
+*/
+@import url("./layouts/site.css");
+@import url("./layouts/classes.css");
+@font-face{
+	font-family: HEADER;
+    src: url(fonts/DidactGothic.ttf);
+}

@@ -1,0 +1,28 @@
+.download{
+	display:block;
+	background-color: rgba(255, 222, 173,0.6);
+	margin:5px 2px 0 2px;
+	padding:0;
+	text-align:center;
+}
+.download::before{
+	content: ">Ссылки на скачивание<";
+	display:block;
+	text-align:center;
+	font-weight: bold;
+	background-color: rgba(222, 184, 135, 0.8);
+}
+.download li{
+	display:inline-block;
+	margin:5px 0 5px 0;
+
+}
+.download li a{
+	display:block;
+	padding:5px 10px 5px 10px;
+	text-decoration:none;
+	color:black;
+}
+.download li a:hover{
+	background-color: rgba(222, 184, 135, 0.8);
+}

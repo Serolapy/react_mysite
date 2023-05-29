@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Проект на ReactJS + Express.js для предмета "_Технологии обработки информации_"
+Выполнил студент группы 0432-05 Иванов Владислав В.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Задания
+1. Задание 1 - код находится [тут](https://github.com/Serolapy/reactjsprojectuniv "Мой другой репозиторий").
+	1. [x] Реализовать реакт приложение, которое получает данные пользователя с сервера
+	2. [x] С помощью [].find() => найти принадлежащий конкретному пользователю пост, и его также вывести на страницу ( получится карточка содержащая данные о пользователе, и данные что пользователь написал в посте). Проверку можно завязать на id (Пользователь) == userId (Пост)
+2. Задание 2 - текущий репозиторий.
+	1. [x] Реализовать раздел навигации Вход / Регистрация
+	2. [x] Развернуть на фронте стор менеджер (redux)
+	3. [x] Реализовать редюсер, который будет вызывать редюсер для получения пользователя и произовить регистрацию пользователя (в данном случае соединять массив) let users = [ {...}, newUser ]
+	4. [x] Хранить шаблонные данные пользователя в локальной переменной, которую вернет редюсер
+	
+	5. [x] Развернуть сервер на express.js. Создать роутинги по аналогии с роутингом posts
+	6. [x] При нажатии на кнопку Вход / Зарегистрироваться передавать заполненные данные на сервер, в соответствующий роутинг (GET , POST)
+	7. [x] Если действие является "Вход" - выполнить вызов метода Users.findOne({login: login, password: password}), полученный ответ передать в реакт (фронт), иначе вывести положительный ответ с текстом "Пользователь отсутствует".
+	8. [x] Если действие является "Регистрация" заносить в базу данных в коллекцию (таблицу) users данные, введенные пользователем. [ ]После чего перенаправлять на роутинг получения пользователя ( res.redirect(/user/${id}) ) и вернуть полученного пользователя в реакт (фронт).
 
-## Available Scripts
+## Пояснения
 
-In the project directory, you can run:
+Тут я оставлю небольшую справку по данному проекту.
 
-### `npm start`
+### Задание 2
+#### Задача 1
+> Реализовать раздел навигации Вход / Регистрация
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Раздел навигации был реализован в `<Aside>` страницы. В Redux хранится объект (в __userReducer__), содержащий поле `authorized`. Во время логина/авторизации/регистрации значение этого ключа изменяется на `true`; при логауте, соответственно, `false`. В `<Aside>` постоянно проверяется значение ключа `authorized` и, в соответствии со значением, выводит пользователю либо ссылки на регистрацию и авторизацию, либо его данные.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Задача 2
+> Развернуть на фронте стор менеджер (redux)
 
-### `npm test`
+Развернуто в `src\store\reducers\usersReducer.js`. У меня используется для хранения данных об этом авторизованном пользователе.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+const initState = {
+	authorized: false,
+	nickname : '',
+	login : '',
+	registred : '',
+	catwarId : 0
+}
+```
 
-### `npm run build`
+`authorized` - см. ***задачу 1***
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`nickname` - имя пользователя
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`login` - уникальное имя полбзователя
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`registred` - дата регистрации
 
-### `npm run eject`
+`catwarId` - не учитывать; для будущего проекта
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Задача 3, 4
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Реализовать редюсер, который будет вызывать редюсер для получения пользователя и произовить регистрацию пользователя (в данном случае соединять массив) let users = [ {...}, newUser ]
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Хранить шаблонные данные пользователя в локальной переменной, которую вернет редюсер
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Мне кажется, что хранить данные обо всех пользователях на фронте - не лучшая идея... Пример использования Reducer указал в ***задаче 2***.
 
-## Learn More
+## Задание 2 - со звёздочкой
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Весь бэкэнд находится в `database.`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Внимание! Я не успел доделать блоги на фронте, а на сервере всё уже сделано. На бэке может быть закомментированный код - это код для блогов. Он рабочий и проверен.
 
-### Code Splitting
+### Задача 5
+> Развернуть сервер на express.js. Создать роутинги по аналогии с роутингом posts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Находится в `database\routes`.
 
-### Analyzing the Bundle Size
+### Задача 6, 7, 8
+> При нажатии на кнопку Вход / Зарегистрироваться передавать заполненные данные на сервер, в соответствующий роутинг (GET , POST)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> Если действие является "Вход" - выполнить вызов метода Users.findOne({login: login, password: password}), полученный ответ передать в реакт (фронт), иначе вывести положительный ответ с текстом "Пользователь отсутствует".
 
-### Making a Progressive Web App
+> Если действие является "Регистрация" заносить в базу данных в коллекцию (таблицу) users данные, введенные пользователем. После чего перенаправлять на роутинг получения пользователя ( res.redirect(/user/${id}) ) и вернуть полученного пользователя в реакт (фронт).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Авторизация происходит при помощи Cookie. Доступ к кукам на фронте не доступен! При регистрации/авторизации сервер возвращает ответ с заголовком `set-cookie` и его значением `token=<token>`. Все дальнейшие действия, касающиеся запросов к бэкэнду, происходят с помощью этого кука. 
 
-### Advanced Configuration
+__Бэкэнд__:
+1. Весь код тут: `database\routes\users.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+__Фонтэнд__: 
 
-### Deployment
+1. Логаут и выбор кнопок регистрация/авторизация в `src\layouts\Aside.jsx`;
+2. Логин происходит на странице по адресу [/login](#). Код фронта находится тут: `src\contents\Login.jsx`;
+3. Регистрация происходит на странице по адресу [/reg](#). Код фронта находится тут: `src\contents\Reg.jsx`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Запуск проекта
+При запуске проекта доступны несколько скриптов:
 
-### `npm run build` fails to minify
+`npm run build`, `npm run test`, `npm run eject` - стандарт рикта
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm run react` - запуск фронтэнда (без бэкэнда)
+
+`npm run database` - запуск бэкэнда (без фронтэнда)
+
+`npm start` - одновременный параллельный запуск всего проекта (фронтэнда и бэкэнда). Необходимо `concurrently`; иначе запускать проект по частям.
+
+## Константы
+
+Константы проекта указаны в `src\const.json`. Там указаны данные для подключения к бэкэнду, базе данных и имя базы данных. 
+
+## Дополнительноиспользованные библиотеки
+Библиотеки, которые я использовал дополнительно (не по шаблону преподавателя).
+
+`colors` - для быстрой покраски текста в консоли на бэкэнде.
+
+`cookie-parser` - для куков
+
+`nodemon` - для автоматичесокго перезапуска бэкэнда при изменении кода/ошибки
+
+`redux-devtools-extension` с соответствующим расширением в браузере - для дебага фронта
+
+## Использование Git
+Моя ошибка - не делал коммиты, из-за чего потом сам и страдал. 

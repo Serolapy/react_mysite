@@ -1,0 +1,16 @@
+.memory{
+	display:block;
+	text-align:left;
+	background-color:white;
+	margin: 5px 10% 5px 10%;
+	list-style-position:inside;
+	list-style-type: "> ";
+	padding: 5px 0 5px 0;
+}
+.memory::before{
+	display:block;
+	content:">Памятка<";
+	text-align:center;
+	font-weight: bold;
+	margin-bottom: 5px;
+}

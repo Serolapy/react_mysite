@@ -1,0 +1,51 @@
+aside{
+	position: absolute;
+	right:20%;
+	width:15%;
+	min-width: 125px;
+	background-color:rgba(255, 222, 173, 0.6);
+	padding:10px;
+	top:130px;
+	border-radius: 20px 0 0 0;
+	display:block;
+	text-align:center;
+}
+
+#account{
+	text-align: left;
+	margin: 10px 0;
+}
+#aside_nickname{
+	font-weight: bold;
+}
+#aside_login{
+	font-style: italic;
+}
+	#aside_login::before{
+		content: '@';
+		font-style: italic;
+	}
+#aside_registred{
+	font-size: small;
+}
+aside a{
+	display:block;
+	width:100%;
+	text-decoration:none;
+	color:black;
+	padding:5px 0 5px 0;
+	border-radius:10px;
+	border: 1px solid #00000050;
+	transition: 0.5s;
+	margin-top: 5px;
+}
+aside h2{
+	font-size: 1.5em;
+	margin:0 0 3px 0;
+	font-family:HEADER;
+	font-weight: bold;
+
+}
+aside a:hover{
+	background-color: rgba(222, 184, 135, 0.8);
+}
